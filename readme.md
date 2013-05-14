@@ -11,7 +11,7 @@ Let's build for the future of the web, not its past.
 ## This makes it easy
 
 1. Optionally start with a string of minimium browser versions.
-    - seperate browsers wih 'or'
+    - seperate browsers with 'or'
     - versions will be parsed as floats
     - you can add a "+" to the version number to indicate that anything above that is fine
     - if you don't specify a "+" it will look for the exact version number
