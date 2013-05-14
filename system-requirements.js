@@ -2,6 +2,15 @@
 var ua = navigator.userAgent,
     trim = function(string) {
         return string.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g,'')
+    },
+    valid = {
+        ie: 'msie',
+        msie: 'msie',
+        ff: 'firefox',
+        firefox: 'firefox',
+        safari: 'safari',
+        chrome: 'chrome',
+        opera: 'opera'
     };
 
 // from: http://stackoverflow.com/a/5918791/107722
@@ -23,21 +32,28 @@ function parseBrowserTypes(string) {
         passed = false,
         i = 0,
         l = arr.length,
-        split;
+        split,
+        translatedName,
+        hasPlus;
 
     for (; i < l; i++) {
         split = trim(arr[i]).split(' ');
-        if (split[0].toLowerCase() === name && parseFloat(split[1]) <= version) {
-            passed = true
+        translatedName = valid[split[0].toLowerCase()];
+        if (!translatedName) {
+            throw new Error('Unrecognized browser name:' + split[0]);
+        }
+        if (translatedName === name) {
+            hasPlus = split[1].indexOf('+') !== -1;
+            if (hasPlus) {
+                passed = parseFloat(split[1]) <= version;
+            } else {
+                passed = parseFloat(split[1]) === version;
+            }
         }
         if (passed) break;
     }
 
     return passed;
-}
-
-function fail(args) {
-    window.location = args[args.length - 1];
 }
 
 window.systemRequirements = function (browserString) {
@@ -48,7 +64,7 @@ window.systemRequirements = function (browserString) {
 
     if (typeof browserString === 'string') {
         if (!parseBrowserTypes(browserString)) {
-            return fail(arguments);
+            return false;
         }
         // incr starting point for loop
         i = 1
@@ -57,10 +73,12 @@ window.systemRequirements = function (browserString) {
     for (; i < l; i++) {
         if (arguments[i] instanceof Function) {
             if (!arguments[i]()) {
-                return fail(arguments);
+                return false;
             }
         }
     }
+
+    return true;
 };
 
 })();
