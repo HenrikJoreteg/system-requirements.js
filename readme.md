@@ -8,7 +8,6 @@ I *thoroughly* believe that in a lot of cases you get what you tolerate and we'v
 
 Let's build for the future of the web, not its past. 
 
-
 ## This makes it easy
 
 1. Optionally start with a string of minimium browser versions.
@@ -21,8 +20,8 @@ Let's build for the future of the web, not its past.
         - `chrome 20+ or firefox 20+ or safari 5+` (only)
         - `safari 5` (will only pass for safari 5)
         - `ie 8+ or chrome 5+ or ff 4+ or safari 5+`
-2. Pass in any number of tests, these could be Modernizr tests, etc.
-3. The function simply returns a boolean, `true` if requirements are met `false` if they're not.
+2. Pass in any number of tests, these could be [Modernizr](http://modernizr.com) tests or anything. If it returns `true` (or anything truthy) the test is considered passed.
+3. The `systemRequirments` function simply returns a boolean, `true` if requirements are met `false` if they're not.
 
 
 
