@@ -15,7 +15,8 @@ Let's build for the future of the web, not its past.
 2. Pass in any number of tests, these could be Modernizr tests, etc
 3. Finally pass the URL to redirect to if requirements are not met
 
-** examples: **
+**examples:**
+
 ```js
 // a set of acceptable browsers, and a string for where to go if you fail
 systemRequirements('chrome 25+ or firefox 20+ or safari 3+', '/system-requirements');
