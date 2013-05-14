@@ -1,0 +1,14 @@
+{
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "name": "system-requirements",
+  "description": "Boxed software has 'em, now the web does too.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/henrikjoreteg/system-requirements.js.git"
+  },
+  "main": "./system-requirements.js",
+  "devDependencies": {
+    "precommit-hook": ""
+  }
+}
