@@ -6,18 +6,19 @@ var ua = navigator.userAgent,
     valid = {
         ie: 'msie',
         msie: 'msie',
-        ff: 'firefox',
+        fx: 'firefox',
         firefox: 'firefox',
         safari: 'safari',
         chrome: 'chrome',
-        opera: 'opera'
+        opera: 'opera',
+        chromium: 'chromium'
     };
 
 // from: http://stackoverflow.com/a/5918791/107722
 function getVersion() {
     var N = navigator.appName,
         tem,
-        M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+        M = ua.match(/(opera|chrome|safari|firefox|msie|chromium)\/?\s*(\.?\d+(\.\d+)*)/i);
     if (M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2] = tem[1];
     M = M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
     return M;
